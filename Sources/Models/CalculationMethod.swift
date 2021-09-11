@@ -126,6 +126,9 @@ public enum CalculationMethod: String, Codable, CaseIterable {
 
     // Dianet
     case turkey
+    
+    // ministry of endowments and religious affairs
+    case oman
 
     // Other
     case other
@@ -172,6 +175,10 @@ public enum CalculationMethod: String, Codable, CaseIterable {
         case .turkey:
             var params = CalculationParameters(fajrAngle: 18, ishaAngle: 17, method: self)
             params.methodAdjustments = PrayerAdjustments(fajr: 0, sunrise: -7, dhuhr: 5, asr: 4, maghrib: 7, isha: 0)
+            return params
+        case .oman:
+            var params = CalculationParameters(fajrAngle: 17.75, ishaAngle: 18.5, method: self)
+            params.methodAdjustments = PrayerAdjustments(fajr: 0, sunrise: 2, dhuhr: 6, asr: 7, maghrib: 7, isha: 0)
             return params
         case .other:
             return CalculationParameters(fajrAngle: 0, ishaAngle: 0, method: self)
